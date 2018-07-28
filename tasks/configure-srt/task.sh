@@ -148,27 +148,10 @@ cf_resources=$(
     '
     {
       "backup-prepare": {"internet_connected": $internet_connected},
-      "clock_global": {"internet_connected": $internet_connected},
-      "cloud_controller": {"internet_connected": $internet_connected},
-      "cloud_controller_worker": {"internet_connected": $internet_connected},
-      "consul_server": {"internet_connected": $internet_connected},
-      "credhub": {"internet_connected": $internet_connected},
-      "diego_brain": {"internet_connected": $internet_connected},
-      "diego_cell": {"internet_connected": $internet_connected},
-      "diego_database": {"internet_connected": $internet_connected},
-      "doppler": {"internet_connected": $internet_connected},
-      "ha_proxy": {"internet_connected": $internet_connected},
-      "loggregator_trafficcontroller": {"internet_connected": $internet_connected},
-      "mysql": {"instances": 0, "internet_connected": $internet_connected},
-      "mysql_monitor": {"instances": 0, "internet_connected": $internet_connected},
-      "mysql_proxy": {"instances": 0, "internet_connected": $internet_connected},
-      "nats": {"internet_connected": $internet_connected},
-      "nfs_server": {"internet_connected": $internet_connected},
+      "compute": {"internet_connected": $internet_connected},
+      "control": {"internet_connected": $internet_connected},
+      "database": {"internet_connected": $internet_connected},
       "router": {"internet_connected": $internet_connected},
-      "syslog_adapter": {"internet_connected": $internet_connected},
-      "syslog_scheduler": {"internet_connected": $internet_connected},
-      "tcp_router": {"internet_connected": $internet_connected},
-      "uaa": {"internet_connected": $internet_connected}
     }
 
     |
@@ -177,10 +160,10 @@ cf_resources=$(
 
     if $iaas == "aws" then
       .router |= . + { "elb_names": ["\($terraform_prefix)-Pcf-Http-Elb"] }
-      | .diego_brain |= . + { "elb_names": ["\($terraform_prefix)-Pcf-Ssh-Elb"] }
+      | .control |= . + { "elb_names": ["\($terraform_prefix)-Pcf-Ssh-Elb"] }
     elif $iaas == "gcp" then
       .router |= . + { "elb_names": ["http:\($terraform_prefix)-http-lb-backend","tcp:\($terraform_prefix)-wss-logs"] }
-      | .diego_brain |= . + { "elb_names": ["tcp:\($terraform_prefix)-ssh-proxy"] }
+      | .control |= . + { "elb_names": ["tcp:\($terraform_prefix)-ssh-proxy"] }
     else
       .
     end
