@@ -139,7 +139,7 @@ cf_network=$(
     }
     '
 )
-
+echo "config resources for srt"
 cf_resources=$(
   jq -n \
     --arg terraform_prefix $terraform_prefix \
@@ -169,6 +169,8 @@ cf_resources=$(
     end
     '
 )
+
+echo $cf_resources
 
 cf_properties=$(
   jq -n \
