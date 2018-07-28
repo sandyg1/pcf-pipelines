@@ -251,7 +251,7 @@ jobs:
       params: {globs: []}
     - get: terraform-state
 
-  - task: configure-ert
+  - task: configure-srt
     file: pcf-pipelines/tasks/configure-srt/task.yml
     params:
       pcf_iaas: gcp

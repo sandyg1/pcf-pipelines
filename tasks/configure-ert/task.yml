@@ -11,7 +11,7 @@ inputs:
 - name: terraform-state
 
 run:
-  path: pcf-pipelines/tasks/configure-ert/task.sh
+  path: pcf-pipelines/tasks/configure-srt/task.sh
 
 params:
   pcf_iaas:
