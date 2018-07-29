@@ -107,7 +107,7 @@ jobs:
         globs:
         - "*GCP.yml"
   - task: create-infrastructure
-    file: pcf-pipelines/install-pcf/gcp/tasks/create-infrastructure/task.yml
+    file: pcf-pipelines/install-pcf/gcp/tasks/create-infrastructure-srt/task.yml
     params:
       GCP_PROJECT_ID: {{gcp_project_id}}
       GCP_REGION: {{gcp_region}}

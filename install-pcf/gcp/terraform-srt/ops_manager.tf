@@ -22,8 +22,8 @@ resource "google_compute_instance" "ops-manager" {
   }
 }
 
-resource "google_storage_bucket" "director" {
-  name          = "${var.prefix}-director"
-  location      = "${var.gcp_storage_bucket_location}"
-  force_destroy = true
-}
+#resource "google_storage_bucket" "director" {
+#  name          = "${var.prefix}-director"
+#  location      = "${var.gcp_storage_bucket_location}"
+#  force_destroy = true
+#}
