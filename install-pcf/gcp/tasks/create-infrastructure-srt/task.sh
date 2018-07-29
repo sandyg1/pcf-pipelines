@@ -43,7 +43,7 @@ terraform plan \
   -var "pcf_ert_ssl_key=${pcf_ert_ssl_key}" \
   -out terraform.tfplan \
   -state terraform-state/terraform.tfstate \
-  pcf-pipelines/install-pcf/gcp/terraform
+  pcf-pipelines/install-pcf/gcp/terraform-srt
 
 terraform apply \
   -state-out $root/create-infrastructure-output/terraform.tfstate \
