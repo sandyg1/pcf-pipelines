@@ -21,5 +21,3 @@ variable "apps_domain" {}
 variable "pcf_ert_ssl_cert" {}
 
 variable "pcf_ert_ssl_key" {}
-
-}
